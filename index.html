@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4NIGHTS — Luxury Women's Atelier</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:      #FFFFFF;
+      --lv-grey:    #F6F6F6;
+      --black:      #000000;
+      --text-dark:  #000000;
+      --text-muted: #666666;
+      --border:     #E5E5E5;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--black);
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-align: center;
+      padding: 10px 20px;
+      font-weight: 400;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 101;
+    }
+
+    /* ── NAVIGATION SYSTEM ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 80px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      height: 100%;
+      align-items: center;
+    }
+
+    .nav-item {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-item > a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      font-weight: 500;
+      text-transform: uppercase;
+      padding: 15px 0;
+      cursor: pointer;
+    }
+
+    /* DROPDOWNS */
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--white);
+      border: 1px solid var(--border);
+      list-style: none;
+      min-width: 240px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.25s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .nav-item:hover .dropdown {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .dropdown li a:hover {
+      background: var(--lv-grey);
+    }
+
+    .logo-container {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text-dark);
+      position: relative;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px; right: -6px;
+      background: var(--black);
+      color: var(--white);
+      font-size: 9px;
+      font-weight: 600;
+      border-radius: 50%;
+      width: 16px; height: 16px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── HERO & CAROUSEL LAYOUT ── */
+    .hero {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--border);
+    }
+
+    .hero-left {
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--border);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+    }
+
+    .hero-title em { font-style: italic; }
+
+    .hero-sub {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.8;
+      max-width: 440px;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      padding: 18px 40px;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover { background: var(--lv-grey); transform: translateY(-2px); }
+
+    /* EDITORIAL CAROUSEL */
+    .hero-right-carousel {
+      position: relative;
+      background: #111;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 2s ease;
+      transform: scale(1.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .carousel-slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 100%);
+      z-index: 1;
+    }
+
+    .carousel-meta {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 400px;
+    }
+
+    .carousel-tag {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #D4AF37;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .carousel-prod-title {
+      font-size: 20px;
+      text-transform: uppercase;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-bar {
+      background: var(--lv-grey);
+      overflow: hidden;
+      padding: 14px 0;
+      display: flex;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 60px;
+      animation: marquee 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-track span {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--black);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── DYNAMIC SYSTEM SECTIONS ── */
+    section { padding: 90px 48px; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 300;
+      margin-bottom: 50px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title em { font-style: italic; }
+
+    /* CATALOG VIEW CONTROLLER */
+    #catalog-section {
+      display: none;
+    }
+
+    /* PRODUCTS GRID */
+    .products-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 20px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 24px;
+    }
+
+    .product-card { cursor: pointer; }
+
+    .product-img {
+      background: var(--lv-grey);
+      aspect-ratio: 3/4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-img img { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain; 
+      padding: 12px;
+      transition: opacity 0.3s ease, transform 0.4s ease; 
+    }
+    .product-img svg { width: 75%; transition: transform 0.4s ease; }
+    .product-card:hover .product-img img, .product-card:hover .product-img svg { transform: scale(1.02); }
+
+    .product-meta { display: flex; justify-content: space-between; align-items: flex-start; }
+    .product-name { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 4px; }
+    .product-desc { font-size: 11px; color: var(--text-muted); }
+    .product-price { font-size: 13px; font-weight: 600; }
+
+    /* ── INFOPAGE CONTENT LAYOUT ── */
+    .infopage-container {
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-family: 'Inter', sans-serif;
+      color: #333;
+    }
+    .infopage-container h3 {
+      font-family: 'Montserrat';
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      margin-top: 40px;
+      margin-bottom: 16px;
+      border-left: 3px solid var(--black);
+      padding-left: 12px;
+      color: var(--black);
+    }
+    .infopage-container p { font-size: 14px; margin-bottom: 18px; color: #444; text-align: justify; }
+    
+    /* ── CART SIDEBAR ── */
+    .cart-sidebar {
+      position: fixed;
+      top: 0; right: 0;
+      width: 420px; height: 100%;
+      background: var(--white);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -10px 0 40px rgba(0,0,0,0.05);
+    }
+
+    .cart-sidebar.open { transform: translateX(0); }
+    .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 30px; border-bottom: 1px solid var(--border); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 30px; }
+    .cart-item { display: grid; grid-template-columns: 70px 1fr auto; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: center; }
+    .cart-item-img { background: var(--lv-grey); aspect-ratio: 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .cart-item-img img { width: 100%; height: 100%; object-fit: contain; }
+    .cart-footer { padding: 30px; border-top: 1px solid var(--border); background: var(--lv-grey); }
+    .cart-total { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 20px; text-transform: uppercase; }
+    .checkout-btn { width: 100%; background: var(--black); color: var(--white); border: none; padding: 18px; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; cursor: pointer; }
+
+    /* ── PRODUCT WINDOW MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0; background: rgba(0,0,0,0.4); z-index: 999;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s;
+      backdrop-filter: blur(2px);
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal { background: var(--white); width: 90%; max-width: 900px; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+    .modal-img { background: var(--lv-grey); display: flex; align-items: center; justify-content: center; overflow: hidden; aspect-ratio: 3/4; }
+    .modal-img img { width: 100%; height: 100%; object-fit: contain; padding: 24px; }
+    .modal-info { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 22px; cursor: pointer; z-index: 10; }
+    .modal-title { font-size: 24px; font-weight: 500; text-transform: uppercase; margin-bottom: 10px; }
+    .modal-price { font-size: 18px; font-weight: 600; margin-bottom: 20px; }
+    .size-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+    .size-btn { border: 1px solid var(--border); background: none; padding: 10px 14px; font-size: 11px; cursor: pointer; font-family: 'Montserrat'; }
+    .size-btn.active, .size-btn:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); color: var(--white); padding: 80px 48px 40px; font-size: 12px; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
+    .footer-col h4 { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 24px; font-weight: 600; color: var(--white); }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { color: #aaaaaa; text-decoration: none; font-size: 12px; letter-spacing: 0.02em; transition: color 0.2s; cursor: pointer; display: inline-block; }
+    .footer-col ul li a:hover { color: var(--white); }
+    .footer-logo { height: 36px; width: auto; object-fit: contain; filter: brightness(0) invert(1); margin-bottom: 20px; }
+
+    @media (max-width: 990px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; height: auto; }
+      .hero-left { padding: 60px 24px; }
+      .hero-right-carousel { height: 400px; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .modal { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">Complimentary worldwide shipping on premium orders</div>
+
+<nav>
+  <ul class="nav-links">
+    <li class="nav-item">
+      <a onclick="navigateToPage('bags-segment', 'Bags Portfolio')">Bags</a>
+      <ul class="dropdown">
+        <li><a onclick="navigateToPage('bags', 'Bags Segment')">Bags Only</a></li>
+        <li><a onclick="navigateToPage('handbags', 'Handbags Capsule')">Handbags</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a onclick="navigateToPage('slg-segment', 'Small Leather Goods')">Small Leather Goods</a>
+      <ul class="dropdown">
+        <li><a onclick="navigateToPage('belts', 'Sculpted Belts')">Belts</a></li>
+        <li><a onclick="navigateToPage('wallets', 'Fine Wallets')">Wallets</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a onclick="navigateToPage('boots-all', 'Boots Portfolio')">Boots</a>
+      <ul class="dropdown">
+        <li><a onclick="navigateToPage('ankle boots', 'Ankle Boots Collection')">Ankle Boots</a></li>
+        <li><a onclick="navigateToPage('boots', 'High Boots Series')">High Boots</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a onclick="navigateToPage('shoes-all', 'Shoes Runway')">Shoes</a>
+      <ul class="dropdown">
+        <li><a onclick="navigateToPage('pumps', 'Atelier Pumps')">Pumps &amp; Sandals</a></li>
+        <li><a onclick="navigateToPage('shoes-sub', 'Fine Shoes')">Fine Shoes</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <a href="#" class="logo-container" onclick="navigateToPage('all', 'Seasonal Editions')">
+    <img src="logo_4n_b.png" alt="4NIGHTS" class="logo-img">
+  </a>
+
+  <div class="nav-icons">
+    <button class="nav-icon" title="Search" onclick="alert('Search feature coming soon.')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+    </button>
+    <button class="nav-icon" onclick="toggleCart()" title="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+      <span class="cart-badge" id="cartCount">0</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">The Atelier 4NIGHT´S — Autumn 2026</p>
+    <h1 class="hero-title">Sculpted leather<br>by hand in<br><em>Portugal</em></h1>
+    <p class="hero-sub">Uncompromising precision meets the rhythm of the night. Discover an exclusive capsule of women's leather architecture crafted in limited editions.</p>
+    <div>
+      <a class="btn-primary" onclick="navigateToPage('all', 'Seasonal Editions')">Explore Collections →</a>
+    </div>
+  </div>
+  
+  <div class="hero-right-carousel" id="editorialCarousel">
+    <div class="carousel-slide active" style="background-image: url('WhatsApp-Image-2024-07-13-at-08.43.25-600x398.jpeg');">
+      <div class="carousel-meta">
+        <span class="carousel-tag">Atelier Handcraft</span>
+        <h4 class="carousel-prod-title">6151 PALM — Blue Python</h4>
+      </div>
+    </div>
+    <div class="carousel-slide" style="background-image: url('x_BL_6158_Sun_CamelReptil_1-1365x2048.jpg');">
+      <div class="carousel-meta">
+        <span class="carousel-tag">Premium Geometry</span>
+        <h4 class="carousel-prod-title">6158 SUN — Camel Reptile</h4>
+      </div>
+    </div>
+    <div class="carousel-slide" style="background-image: url('20210927_165623.jpg');">
+      <div class="carousel-meta">
+        <span class="carousel-tag">Limited Architecture</span>
+        <h4 class="carousel-prod-title">6152 PRISM — Structural Concept</h4>
+      </div>
+    </div>
+    <div class="carousel-slide" style="background-image: url('IMG_20220113_114946.jpg');">
+      <div class="carousel-meta">
+        <span class="carousel-tag">Atelier Original Hides</span>
+        <h4 class="luxury fine detailing">Luxury Fine Detailing</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span>Handcrafted in Portugal Line</span><span>✦</span>
+    <span>Premium Leather Geometry</span><span>✦</span>
+    <span>Limited Editions Only</span><span>✦</span>
+    <span>Worldwide Secure Allocation</span><span>✦</span>
+  </div>
+</div>
+
+<section id="catalog-section">
+  <div class="products-header" id="page-target">
+    <div>
+      <p class="section-eyebrow" id="dynamicEyebrow">Department View</p>
+      <h2 class="section-title" id="dynamicTitle" style="margin-bottom:0;">Seasonal <em>Editions</em></h2>
+    </div>
+  </div>
+  <div id="dynamicCanvas"></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <img src="logo_4n_b.png" alt="4NIGHTS" class="footer-logo">
+      <p style="color:#aaa; line-height:1.6; max-width: 260px;">Premium silhouettes engineered with fine materials and clean design lines.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Departments</h4>
+      <ul>
+        <li><a onclick="navigateToPage('bags-segment', 'Bags Portfolio')">Bags &amp; Handbags</a></li>
+        <li><a onclick="navigateToPage('slg-segment', 'Small Leather Goods')">Small Leather Goods</a></li>
+        <li><a onclick="navigateToPage('boots-all', 'Boots Portfolio')">Boots Portfolio</a></li>
+        <li><a onclick="navigateToPage('shoes-all', 'Fine Shoes')">Fine Heels &amp; Shoes</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>The Brand</h4>
+      <ul>
+        <li><a onclick="navigateToInfoPage('origin')">Our Origin</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Concierge Services</h4>
+      <ul>
+        <li><a onclick="navigateToInfoPage('shipping')">Shipping &amp; Bespoke Duties</a></li>
+      </ul>
+    </div>
+  </div>
+  <div style="text-align:center; padding-top:30px; border-top:1px solid #222; color:#555;">
+    &copy; 2026 4NIGHTS Atelier. All Rights Reserved.
+  </div>
+</footer>
+
+<div class="modal-overlay" id="productModal" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="modal-img" id="modalImg"></div>
+    <div class="modal-info">
+      <h3 class="modal-title" id="modalTitle">Product Title</h3>
+      <div class="modal-price" id="modalPrice">€0</div>
+      <p id="modalDescription" style="font-size:13px; color:var(--text-muted); margin-bottom:20px; line-height: 1.6;"></p>
+      <p style="font-size:11px; font-weight:600; text-transform:uppercase; margin-bottom:10px;">Select Allocation Option</p>
+      <div class="size-grid" id="modalSizes"></div>
+      <button class="checkout-btn" onclick="addToCartFromModal()">Add To Bag</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3 style="font-size:14px; text-transform:uppercase; letter-spacing:0.1em;">Shopping Bag</h3>
+    <button style="background:none; border:none; font-size:22px; cursor:pointer;" onclick="toggleCart()">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cartTotal">€0</span>
+    </div>
+    <button class="checkout-btn" onclick="alert('Redirecting to secure gateway...')">Verify Allocation Checkout</button>
+  </div>
+</div>
+
+<script>
+  const productsDatabase = [
+    // --- PALM BAGS ---
+    { 
+      id: 1, category: "handbags", model: "6151 PALM", color: "Blue Python", price: 531, sizes: ["One Size"], 
+      images: [
+        "B_6151_Palm_BluePython_3-300x300.jpg",
+        "B_6151_Palm_BluePython_4-300x300.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf that symbolises peace, kindness and victory. Exterior: goatskin in tone of blue pitton. Interior: matching tone gorgon fabric with zippered pouch. Accessory: golden 4N symbol. Clasp: golden latch with magnet. Measures: 17x22x6.5 cm. Chain: gold plated with matching leather strap."
+    },
+    { 
+      id: 2, category: "bags", model: "6151 PALM", color: "Golden Iguana B", price: 530, sizes: ["One Size"], 
+      images: [
+        "B_6151_Palm_GoldenIguanaB_3-300x300.jpg",
+        "B_6151_Palm_GoldenIguanaB_4-300x300.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf that symbolises peace, kindness and victory. Exterior: goatskin in tone of gold iguana. Interior: matching tone gorgon fabric with zippered pouch. Accessory: golden 4N symbol. Clasp: golden latch with magnet. Measures: 17x22x6.5 cm."
+    },
+    { 
+      id: 3, category: "handbags", model: "6151 PALM", color: "Black", price: 500, sizes: ["One Size"], 
+      images: [
+        "B_6151_Palm_Black_3-300x300.jpg",
+        "B_6151_Palm_Black_4-300x300.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf that symbolises peace, kindness and victory. Exterior: goatskin in tone of black. Interior: matching tone gorgon fabric with zippered pouch. Accessory: golden 4N symbol. Measures: 17x22x6.5 cm."
+    },
+    
+    // --- PALM SANDALS ---
+    { 
+      id: 4, category: "pumps", model: "6151 PALM — Sandals", color: "Blue Python", price: 428, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6151_Palm_BluePython_1.jpg",
+        "S_6151_Palm_BluePython_2.jpg",
+        "S_6151_Palm_BluePython_3.jpg",
+        "S_6151_Palm_BluePython_5.jpg",
+        "S_6151_Palm_BluePython_9.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf. Leather: goatskin in tones of blue pitton. Insole: cushioned goatskin in matching light tone. Clasp: golden snap button. Heel: 10cm."
+    },
+    { 
+      id: 5, category: "pumps", model: "6151 PALM — Sandals", color: "Black", price: 412, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6151_Palm_Black_1.jpg",
+        "S_6151_Palm_Black_2.jpg",
+        "S_6151_Palm_Black_4.jpg",
+        "S_6151_Palm_Black_8.jpg",
+        "S_6151_Palm_Black_10.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf. Leather: goatskin in tones of black. Insole: cushioned goatskin in matching light tone. Heel: 10cm."
+    },
+    { 
+      id: 20, category: "pumps", model: "6151 PALM — Sandals", color: "Golden Iguana", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6151_Palm_GoldenIguana_1.jpg",
+        "S_6151_Palm_GoldenIguana_3.jpg",
+        "S_6151_Palm_GoldenIguana_6.jpg",
+        "S_6151_Palm_GoldenIguana_8.jpg",
+        "S_6151_Palm_GoldenIguana_10.jpg"
+      ],
+      description: "Inspired by the elegant Palm tree leaf. Leather: goatskin with gold iguana architecture execution. Cushioned clear base. Heel: 10cm."
+    },
+    
+    // --- PRISM SERIES ---
+    { 
+      id: 6, category: "bags", model: "6152 PRISM", color: "Yellow V", price: 500, sizes: ["One Size"],
+      images: ["B_6152_Prism_Pink_3-scaled-300x300.jpg"],
+      description: "Inspired by geometric solids with congruent and parallel faces. Exterior: goatskin in shades of bright yellow. Measures: 22.5x18x7 cm."
+    },
+    { 
+      id: 7, category: "bags", model: "6152 PRISM", color: "White", price: 491, sizes: ["One Size"],
+      images: ["B_6152_Prism_Pink_3-scaled-300x300.jpg"],
+      description: "Inspired by geometric solids with congruent and parallel faces. Exterior: goatskin in shades of white. Measures: 22.5x18x7 cm."
+    },
+    { 
+      id: 8, category: "handbags", model: "6152 PRISM", color: "Pink", price: 482, sizes: ["One Size"], 
+      images: [
+        "B_6152_Prism_Pink_3-scaled-300x300.jpg",
+        "B_6152_Prism_Pink_4-scaled-300x300.jpg"
+      ],
+      description: "Inspired by geometric solids with congruent and parallel faces. Exterior: goatskin in shades of pink. Measures: 22.5x18x7 cm."
+    },
+    { 
+      id: 21, category: "pumps", model: "6152 PRISM — Sandals", color: "Pink", price: 420, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6152_Prism_Pink_1.jpg",
+        "S_6152_Prism_Pink_3.jpg",
+        "S_6152_Prism_Pink_4.jpg",
+        "S_6152_Prism_Pink_8.jpg",
+        "S_6152_Prism_Pink_9.jpg"
+      ],
+      description: "Inspired by geometric solids with congruent and parallel faces. Premium soft pink goatskin leather. Heel: 10cm."
+    },
+    { 
+      id: 22, category: "pumps", model: "6152 PRISM — Sandals", color: "White", price: 425, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6152_Prism_White_1.jpg",
+        "S_6152_Prism_White_3.jpg",
+        "S_6152_Prism_White_4.jpg",
+        "S_6152_Prism_White_5.jpg",
+        "S_6152_Prism_White_9.jpg"
+      ],
+      description: "Inspired by geometric solids with congruent and parallel faces. Immaculate structural white goatskin execution. Heel: 10cm."
+    },
+    { 
+      id: 23, category: "pumps", model: "6152 PRISM — Sandals", color: "Yellow", price: 425, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6152_Prism_Yellow_1.jpg",
+        "S_6152_Prism_Yellow_4.jpg",
+        "S_6152_Prism_Yellow_8.jpg",
+        "S_6152_Prism_Yellow_9.jpg"
+      ],
+      description: "Inspired by geometric solids with congruent and parallel faces. Vibrant bright yellow goatskin architecture. Heel: 10cm."
+    },
+
+    // --- ANKLE BOOTS ---
+    {
+      id: 30, category: "ankle boots", model: "6153 SKY", color: "Green Croco", price: 465, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6153_Sky_GreenCroco_1.jpg",
+        "S_6153_Sky_GreenCroco_2.jpg",
+        "S_6153_Sky_GreenCroco_3.jpg",
+        "S_6153_Sky_GreenCroco_7.jpg",
+        "S_6153_Sky_GreenCroco_8.jpg"
+      ],
+      description: "Associated with the pursuit of success and rapture. Premium goatskin with luxury croco texture in emerald shades. Lining: clear soft goatskin. Heel: 9cm."
+    },
+    {
+      id: 31, category: "ankle boots", model: "6154 RING", color: "Bordeaux Bright", price: 470, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6154_Ring_BordeauxBright_1.jpg",
+        "S_6154_Ring_BordeauxBright_2.jpg",
+        "S_6154_Ring_BordeauxBright_3.jpg",
+        "S_6154_Ring_BordeauxBright_7.jpg",
+        "S_6154_Ring_BordeauxBright_8.jpg"
+      ],
+      description: "Symbolising alliance and deep commitment. Elegant ankle silhouette in rich bright bordeaux goatskin leather. Golden zipper hardware. Heel: 9cm."
+    },
+
+    // --- HIGH BOOTS ---
+    {
+      id: 32, category: "boots", model: "6155 SNAKE", color: "Dark Brown Python", price: 540, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6155_Snake_DarkBrownPython_1.jpg",
+        "S_6155_Snake_DarkBrownPython_2.jpg",
+        "S_6155_Snake_DarkBrownPython_3.jpg",
+        "S_6155_Snake_DarkBrownPython_4.jpg",
+        "S_6155_Snake_DarkBrownPython_6.jpg"
+      ],
+      description: "Symbolises life force, rebirth, renewal, and creation. Magnificent tall structural boot in dark brown python-patterned premium leather. Gold-toned interior zipper details. Heel: 9cm."
+    },
+    {
+      id: 33, category: "boots", model: "6155 SNAKE", color: "Light Brown Python", price: 540, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6155_Snake_LightBrownPython_3.jpg",
+        "S_6155_Snake_LightBrownPython_4.jpg",
+        "S_6155_Snake_LightBrownPython_5.jpg",
+        "S_6155_Snake_LightBrownPython_6.jpg",
+        "S_6155_Snake_LightBrownPython_10.jpg"
+      ],
+      description: "Symbolises life force, rebirth, renewal, and creation. Captivating high knee-length silhouette rendered in light brown python print leather. Cushioned clear base. Heel: 9cm."
+    },
+    {
+      id: 34, category: "boots", model: "6156 DUAL", color: "Imperfection Black", price: 550, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6156_Dual_ImperfectionBlack_1.jpg",
+        "S_6156_Dual_ImperfectionBlack_2.jpg",
+        "S_6156_Dual_ImperfectionBlack_3.jpg",
+        "S_6156_Dual_ImperfectionBlack_7.jpg",
+        "S_6156_Dual_ImperfectionBlack_8.jpg"
+      ],
+      description: "Inspired by the Yin and Yang concepts that symbolize opposite energies complementing each other to generate balance. Finished in smooth premium black goatskin contrasting with an avant-garde texture. Heel: 9cm."
+    },
+    {
+      id: 35, category: "boots", model: "6156 DUAL", color: "Imperfection Brown", price: 550, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6156_Dual_ImperfectionBrown_1.jpg",
+        "S_6156_Dual_ImperfectionBrown_2.jpg",
+        "S_6156_Dual_ImperfectionBrown_3.jpg",
+        "S_6156_Dual_ImperfectionBrown_7.jpg",
+        "S_6156_Dual_ImperfectionBrown_8.jpg"
+      ],
+      description: "Inspired by the Yin and Yang concepts that symbolize opposite energies complementing each other to generate balance. Executed in a rich tone of brown smooth goatskin mixed with structural graphic detailing. Heel: 9cm."
+    },
+
+    // --- FINE SHOES (MOON COLLECTION) ---
+    {
+      id: 36, category: "shoes-sub", model: "6157 MOON", color: "Reptile Black", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6157_Moon_BlackReptil_1.jpg",
+        "S_6157_Moon_BlackReptil_2.jpg",
+        "S_6157_Moon_BlackReptil_4.jpg",
+        "S_6157_Moon_BlackReptil_5.jpg",
+        "S_6157_Moon_BlackReptil_6.jpg"
+      ],
+      description: "Actable as a mirror of sunlight, reflecting femininity, passivity, periodicity, and renewal. Expertly crafted in structural black reptile texture leather with premium lining details. Heel: 9cm."
+    },
+    {
+      id: 37, category: "shoes-sub", model: "6157 MOON", color: "Glossy Green Petroleum", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6157_Moon_GreenPetroleum_4.jpg",
+        "S_6157_Moon_GreenPetroleum_5.jpg",
+        "S_6157_Moon_GreenPetroleum_6.jpg",
+        "S_6157_Moon_GreenPetroleum_7.jpg"
+      ],
+      description: "Actable as a mirror of sunlight, reflecting femininity, passivity, periodicity, and renewal. Finished in an elegant and deeply complex glossy petroleum green shade over rich goatskin hide. Heel: 9cm."
+    },
+
+    // --- ATELIER PUMPS (SUN COLLECTION) ---
+    {
+      id: 38, category: "pumps", model: "6158 SUN", color: "Camel Reptile", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6158_Sun_CamelReptil_1.jpg",
+        "S_6158_Sun_CamelReptil_2.jpg",
+        "S_6158_Sun_CamelReptil_3.jpg",
+        "S_6158_Sun_CamelReptil_4.jpg",
+        "S_6158_Sun_CamelReptil_7.jpg"
+      ],
+      description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Crafted in smooth premium goatskin leather with a unique warm camel reptile texture. Heel: 4.5cm."
+    },
+    {
+      id: 39, category: "pumps", model: "6158 SUN", color: "Black Reptile", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6158_Sun_BlackReptil_2.jpg",
+        "S_6158_Sun_BlackReptil_3.jpg",
+        "S_6158_Sun_BlackReptil_4.jpg",
+        "S_6158_Sun_BlackReptil_5.jpg",
+        "S_6158_Sun_BlackReptil_6.jpg"
+      ],
+      description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless black reptile textured goatskin execution. Heel: 4.5cm."
+    },
+{
+      id: 39, // Ajusta o ID se necessário para ser único
+      category: "pumps", 
+      model: "6158 SUN", 
+      color: "Light Blue Reptil", 
+      price: 435, 
+      sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6158_Sun_LightBlueReptil_3.jpg",
+        "S_6158_Sun_LightBlueReptil_4.jpg",
+        "S_6158_Sun_LightBlueReptil_5.jpg",
+        "S_6158_Sun_LightBlueReptil_6.jpg",
+        "S_6158_Sun_LightBlueReptil_2.jpg"
+      ],
+      description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless light blue reptile textured goatskin execution. Heel: 4.5cm."
+    },
+    // --- OTHER LINES ---
+    { id: 10, category: "bags", model: "6153 FLY", color: "Green Petrol Croco V", price: 495, sizes: ["One Size"], images: [], description: "Inspired by the infinite space of the universe. Croco texturing." },
+    { id: 15, category: "belts", model: "6151 PALM Belt", color: "Blue Python", price: 106, sizes: ["80", "85", "90", "95"], images: [], description: "Premium accessory matching the Palm Collection architecture." },
+    { id: 16, category: "wallets", model: "6151 PALM Wallet", color: "Black Textured", price: 145, sizes: ["One Size"], images: [], description: "Premium small leather wallet matching the Palm Collection architecture." }
+  ];
+
+  const genericVector = `<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="padding:30px;"><rect x="40" y="55" width="120" height="100" rx="3" fill="none" stroke="#000000" stroke-width="1.5"/><line x1="40" y1="95" x2="160" y2="95" stroke="#000000" stroke-width="1"/></svg>`;
+  let cart = [];
+  let selectedProduct = null;
+  let selectedSize = null;
+  let hoverInterval = null;
+
+  // HERO AUTOMATIC CAROUSEL
+  let currentSlideIdx = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+  setInterval(() => {
+    if(slides.length === 0) return;
+    slides[currentSlideIdx].classList.remove('active');
+    currentSlideIdx = (currentSlideIdx + 1) % slides.length;
+    slides[currentSlideIdx].classList.add('active');
+  }, 4000);
+
+  // ROTATIVO INTERATIVO DINÂMICO
+  function startImageScroll(element, imageList) {
+    if (!imageList || imageList.length <= 1) return;
+    let currentIdx = 0;
+    clearInterval(hoverInterval);
+    hoverInterval = setInterval(() => {
+      currentIdx = (currentIdx + 1) % imageList.length;
+      element.src = imageList[currentIdx];
+    }, 900);
+  }
+
+  function stopImageScroll(element, imageList) {
+    clearInterval(hoverInterval);
+    if (imageList && imageList.length > 0) {
+      element.src = imageList[0];
+    }
+  }
+
+  // NAVIGATION & VIEW BUILDER
+  function navigateToPage(pageKey, pageTitle) {
+    const catalogSection = document.getElementById('catalog-section');
+    catalogSection.style.display = 'block';
+
+    document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Studio ➔ ${pageTitle}`;
+    document.getElementById('dynamicTitle').innerHTML = `Atelier <em>${pageTitle}</em>`;
+    
+    const canvas = document.getElementById('dynamicCanvas');
+    canvas.innerHTML = `<div class="products-grid" id="productGrid"></div>`;
+    
+    const grid = document.getElementById('productGrid');
+    let filtered = [];
+
+    if (pageKey === 'all') {
+      filtered = productsDatabase;
+    } else if (pageKey === 'bags-segment') {
+      filtered = productsDatabase.filter(p => ['bags', 'handbags'].includes(p.category));
+    } else if (pageKey === 'slg-segment') {
+      filtered = productsDatabase.filter(p => ['belts', 'wallets'].includes(p.category));
+    } else if (pageKey === 'boots-all') {
+      filtered = productsDatabase.filter(p => ['boots', 'ankle boots'].includes(p.category));
+    } else if (pageKey === 'shoes-all') {
+      filtered = productsDatabase.filter(p => ['pumps', 'shoes-sub'].includes(p.category));
+    } else {
+      filtered = productsDatabase.filter(p => p.category === pageKey);
+    }
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '<p style="grid-column:1/-1; text-align:center; padding:40px; color:#666; font-size:12px; text-transform:uppercase; letter-spacing:0.1em;">No premium designs allocated in this view segment.</p>';
+    } else {
+      grid.innerHTML = filtered.map(p => {
+        const hasImages = p.images && p.images.length > 0;
+        const mainImage = hasImages ? p.images[0] : '';
+        
+        const mediaMarkup = hasImages 
+          ? `<img src="${mainImage}" id="prod-img-${p.id}" 
+                  onmouseenter="startImageScroll(this, ${JSON.stringify(p.images).replace(/"/g, '&quot;')})" 
+                  onmouseleave="stopImageScroll(this, ${JSON.stringify(p.images).replace(/"/g, '&quot;')})" 
+                  alt="${p.model}">` 
+          : genericVector;
+
+        return `
+          <div class="product-card" onclick="openModal(${p.id})">
+            <div class="product-img">${mediaMarkup}</div>
+            <div class="product-meta">
+              <div>
+                <div class="product-name">${p.model}</div>
+                <div class="product-desc">${p.color}</div>
+              </div>
+              <div class="product-price">€${p.price}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    catalogSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // INFOPAGES
+  function navigateToInfoPage(type) {
+    const catalogSection = document.getElementById('catalog-section');
+    catalogSection.style.display = 'block';
+    const canvas = document.getElementById('dynamicCanvas');
+    
+    if(type === 'origin') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Brand ➔ History`;
+      document.getElementById('dynamicTitle').innerHTML = `About <em>Our Studio</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Fundada sob a premissa de unir linhas estruturais puras e a herança artesanal, a 4NIGHTS é uma marca de luxo contemporânea.</p></div>`;
+    } else if(type === 'shipping') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Atelier ➔ Help`;
+      document.getElementById('dynamicTitle').innerHTML = `Shipping &amp; <em>Bespoke Duties</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Envios com seguro total através de parceiros premium mundiais.</p></div>`;
+    }
+    catalogSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // MODAL WINDOW CONTROL
+  function openModal(id) {
+    selectedProduct = productsDatabase.find(p => p.id === id);
+    if (!selectedProduct) return;
+    selectedSize = null;
+
+    document.getElementById('modalTitle').textContent = `${selectedProduct.model} — ${selectedProduct.color}`;
+    document.getElementById('modalPrice').textContent = `€${selectedProduct.price}`;
+    document.getElementById('modalDescription').textContent = selectedProduct.description || "Premium studio production detailing.";
+    
+    const hasImages = selectedProduct.images && selectedProduct.images.length > 0;
+    document.getElementById('modalImg').innerHTML = hasImages 
+      ? `<img src="${selectedProduct.images[0]}" alt="${selectedProduct.model}">` 
+      : genericVector;
+
+    const sizesGrid = document.getElementById('modalSizes');
+    sizesGrid.innerHTML = selectedProduct.sizes.map(s => `
+      <button class="size-btn" onclick="selectSize(this, '${s}')">${s}</button>
+    `).join('');
+
+    document.getElementById('productModal').classList.add('open');
+  }
+
+  function selectSize(btn, size) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    selectedSize = size;
+  }
+
+  function closeModal() { document.getElementById('productModal').classList.remove('open'); }
+  function toggleCart() { document.getElementById('cartSidebar').classList.toggle('open'); }
+
+  function addToCartFromModal() {
+    if (!selectedProduct) return;
+    if (!selectedSize) { alert("Please select an allocation parameter option first."); return; }
+    cart.push({ ...selectedProduct, chosenSize: selectedSize });
+    document.getElementById('cartCount').textContent = cart.length;
+    closeModal();
+    renderCart();
+    toggleCart();
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cartItems');
+    const footer = document.getElementById('cartFooter');
+    if (cart.length === 0) {
+      container.innerHTML = '<p style="color:#666; font-size:13px;">Your dynamic bag is empty.</p>';
+      footer.style.display = 'none';
+      return;
+    }
+    footer.style.display = 'block';
+    container.innerHTML = cart.map((item, idx) => {
+      const imgMarkup = item.images && item.images.length > 0 ? `<img src="${item.images[0]}">` : genericVector;
+      return `
+        <div class="cart-item">
+          <div class="cart-item-img">${imgMarkup}</div>
+          <div>
+            <div class="product-name" style="font-size:12px; margin:0;">${item.model}</div>
+            <div class="product-desc" style="font-size:10px;">Size: ${item.chosenSize}</div>
+          </div>
+          <div style="text-align:right;">
+            <div class="product-price" style="font-size:12px;">€${item.price}</div>
+            <button style="background:none; border:none; cursor:pointer; font-size:16px;" onclick="removeCartItem(${idx})">&times;</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+    const total = cart.reduce((acc, curr) => acc + curr.price, 0);
+    document.getElementById('cartTotal').textContent = `€${total}`;
+  }
+
+  function removeCartItem(idx) {
+    cart.splice(idx, 1);
+    document.getElementById('cartCount').textContent = cart.length;
+    renderCart();
+  }
+</script>
+
+</body>
+</html>
