@@ -644,6 +644,58 @@
 
 <script>
   const productsDatabase = [
+    // --- NOVAS ADIÇÕES ---
+    {
+      id: 36, category: "shoes-sub", model: "6157 MOON", color: "Reptile Black", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6157_Moon_BlackReptil_1.jpg",
+        "S_6157_Moon_BlackReptil_2.jpg",
+        "S_6157_Moon_BlackReptil_4.jpg",
+        "S_6157_Moon_BlackReptil_5.jpg",
+        "S_6157_Moon_BlackReptil_6.jpg"
+      ],
+      description: "Actable as a mirror of sunlight, reflecting femininity, passivity, periodicity, and renewal. Expertly crafted in structural black reptile texture leather with premium lining details. Heel: 9cm."
+    },
+    {
+      id: 39, category: "pumps", model: "6158 SUN", color: "Light Blue Reptil", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
+      images: [
+        "S_6158_Sun_LightBlueReptil_3.jpg",
+        "S_6158_Sun_LightBlueReptil_4.jpg",
+        "S_6158_Sun_LightBlueReptil_5.jpg",
+        "S_6158_Sun_LightBlueReptil_6.jpg",
+        "S_6158_Sun_LightBlueReptil_2.jpg"
+      ],
+      description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless light blue reptile textured goatskin execution. Heel: 4.5cm."
+    },
+    {
+      id: 50, category: "bags", model: "6151 PALM", color: "Black", price: 495, sizes: ["One Size"],
+      images: [
+        "B_6151_Palm_Black_1.jpg",
+        "B_6151_Palm_Black_2.jpg",
+        "B_6151_Palm_Black_3.jpg",
+        "B_6151_Palm_Black_4.jpg",
+        "B_6151_Palm_Black_5.jpg"
+      ],
+      description: "Elegant and versatile, the Palm bag in black leather features our signature hardware. Perfect for any occasion."
+    },
+    {
+      id: 51, category: "bags", model: "6151 PALM", color: "Golden Iguana", price: 525, sizes: ["One Size"],
+      images: [
+        "B_6151_Palm_GoldenIguana_5.jpg"
+      ],
+      description: "A statement piece in luxurious Golden Iguana texture, designed to shine."
+    },
+    {
+      id: 52, category: "bags", model: "6151 PALM", color: "Blue Python", price: 525, sizes: ["One Size"],
+      images: [
+        "B_6151_Palm_BluePython_1.jpg",
+        "B_6151_Palm_BluePython_2.jpg",
+        "B_6151_Palm_BluePython_3.jpg",
+        "B_6151_Palm_BluePython_4.jpg"
+      ],
+      description: "Sophisticated Blue Python texture meets modern design in this exclusive Palm bag."
+    },
+
     // --- PALM BAGS ---
     { 
       id: 1, category: "handbags", model: "6151 PALM", color: "Blue Python", price: 531, sizes: ["One Size"], 
@@ -827,7 +879,7 @@
       description: "Inspired by the Yin and Yang concepts that symbolize opposite energies complementing each other to generate balance. Executed in a rich tone of brown smooth goatskin mixed with structural graphic detailing. Heel: 9cm."
     },
 
-    // --- FINE SHOES (MOON COLLECTION) ---
+// --- FINE SHOES (MOON COLLECTION) ---
     {
       id: 36, category: "shoes-sub", model: "6157 MOON", color: "Reptile Black", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -891,7 +943,14 @@
     },
     // --- OTHER LINES ---
     { id: 10, category: "bags", model: "6153 FLY", color: "Green Petrol Croco V", price: 495, sizes: ["One Size"], images: [], description: "Inspired by the infinite space of the universe. Croco texturing." },
-    { id: 15, category: "belts", model: "6151 PALM Belt", color: "Blue Python", price: 106, sizes: ["80", "85", "90", "95"], images: [], description: "Premium accessory matching the Palm Collection architecture." },
+    { id: 15, category: "belts", model: "6151 PALM Belt", color: "Blue Python", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6151_Palm_BluePython_1.png", "Be_6151_Palm_BluePython_2.png", "Be_6151_Palm_BluePython_3.png"], description: "Premium accessory matching the Palm Collection architecture." },
+    { id: 60, category: "belts", model: "6151 PALM Belt", color: "Black", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6151_Palm_Black_1.png", "Be_6151_Palm_Black_2.png", "Be_6151_Palm_Black_3.png"], description: "Premium accessory matching the Palm Collection architecture." },
+    { id: 61, category: "belts", model: "6151 PALM Belt", color: "Golden Iguana B", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6151_Palm_GoldenIguanaB_1.png", "Be_6151_Palm_GoldenIguanaB_2.png", "Be_6151_Palm_GoldenIguanaB_3.png"], description: "Premium accessory matching the Palm Collection architecture." },
+    { id: 62, category: "belts", model: "6152 PRISM Belt", color: "Pink", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6152_Prism_Pink_1.png", "Be_6152_Prism_Pink_2.png", "Be_6152_Prism_Pink_3.png"], description: "Premium accessory matching the Prism Collection architecture." },
+    { id: 63, category: "belts", model: "6152 PRISM Belt", color: "White", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6152_Prism_White_1.png", "Be_6152_Prism_White_2.png", "Be_6152_Prism_White_3.png"], description: "Premium accessory matching the Prism Collection architecture." },
+    { id: 64, category: "belts", model: "6152 PRISM Belt", color: "Yellow V", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6152_Prism_YellowV_1.png", "Be_6152_Prism_YellowV_2.png", "Be_6152_Prism_YellowV_3.png"], description: "Premium accessory matching the Prism Collection architecture." },
+    { id: 65, category: "belts", model: "6153 FLY Belt", color: "Blue Jeans Croco V", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6153_Fly_BlueJeansCrocoV_1.png", "Be_6153_Fly_BlueJeansCrocoV_2.png", "Be_6153_Fly_BlueJeansCrocoV_3.png"], description: "Premium accessory matching the Fly Collection architecture." },
+    { id: 66, category: "belts", model: "6153 FLY Belt", color: "Green Croco V", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6153_Fly_GreenCrocoV_1.png", "Be_6153_Fly_GreenCrocoV_2.png", "Be_6153_Fly_GreenCrocoV_3.png"], description: "Premium accessory matching the Fly Collection architecture." },
     { id: 16, category: "wallets", model: "6151 PALM Wallet", color: "Black Textured", price: 145, sizes: ["One Size"], images: [], description: "Premium small leather wallet matching the Palm Collection architecture." }
   ];
 
