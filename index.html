@@ -136,19 +136,33 @@
       object-fit: contain;
     }
 
+    .nav-right-container {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 100%;
+    }
+
     .nav-icons {
       display: flex;
       gap: 24px;
       align-items: center;
     }
 
-    .nav-icon {
+    .lang-selector {
+      display: flex;
+      gap: 8px;
+    }
+
+    .lang-btn {
       background: none;
       border: none;
+      font-size: 11px;
       cursor: pointer;
-      padding: 4px;
-      color: var(--text-dark);
-      position: relative;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: color 0.2s, font-weight 0.2s;
     }
 
     .cart-badge {
@@ -161,6 +175,15 @@
       border-radius: 50%;
       width: 16px; height: 16px;
       display: flex; align-items: center; justify-content: center;
+    }
+
+    .nav-icon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--text-dark);
+      position: relative;
     }
 
     /* ── HERO & CAROUSEL LAYOUT ── */
@@ -468,6 +491,7 @@
       .products-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
       .modal { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+      .nav-right-container { gap: 16px; }
     }
   </style>
 </head>
@@ -511,24 +535,33 @@
     <img src="logo_4n_b.png" alt="4NIGHTS" class="logo-img">
   </a>
 
-  <div class="nav-icons">
-    <button class="nav-icon" title="Search" onclick="alert('Search feature coming soon.')">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
-    </button>
-    <button class="nav-icon" onclick="toggleCart()" title="Cart">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-      <span class="cart-badge" id="cartCount">0</span>
-    </button>
+  <div class="nav-right-container">
+    <div class="nav-icons">
+      <div class="lang-selector">
+        <button class="lang-btn active" onclick="changeLanguage('en')" style="font-weight:600; color:#000000;">EN</button>
+        <button class="lang-btn" onclick="changeLanguage('de')" style="font-weight:400; color:#666666;">DE</button>
+        <button class="lang-btn" onclick="changeLanguage('fr')" style="font-weight:400; color:#666666;">FR</button>
+        <button class="lang-btn" onclick="changeLanguage('pt')" style="font-weight:400; color:#666666;">PT</button>
+      </div>
+
+      <button class="nav-icon" title="Search" onclick="alert('Search feature coming soon.')">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg>
+      </button>
+      <button class="nav-icon" onclick="toggleCart()" title="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <span class="cart-badge" id="cartCount">0</span>
+      </button>
+    </div>
   </div>
 </nav>
 
 <section class="hero" style="padding:0;">
   <div class="hero-left">
-    <p class="hero-eyebrow">The Atelier 4NIGHT´S — Autumn 2026</p>
-    <h1 class="hero-title">Sculpted leather<br>by hand in<br><em>Portugal</em></h1>
-    <p class="hero-sub">Uncompromising precision meets the rhythm of the night. Discover an exclusive capsule of women's leather architecture crafted in limited editions.</p>
+    <p class="hero-eyebrow" id="heroEyebrow">Atelier 4NIGHTS — Autumn 2026</p>
+    <h1 class="hero-title" id="heroTitle">Sculpted leather<br>by hand in<br><em>Portugal</em></h1>
+    <p class="hero-sub" id="heroSub">Uncompromising precision meets the rhythm of the night. Discover an exclusive capsule of women's leather architecture crafted in limited editions.</p>
     <div>
-      <a class="btn-primary" onclick="navigateToPage('all', 'Seasonal Editions')">Explore Collections →</a>
+      <a class="btn-primary" id="exploreBtn" onclick="navigateToPage('all', 'Seasonal Editions')">Explore Collections →</a>
     </div>
   </div>
   
@@ -598,12 +631,16 @@
       <h4>The Brand</h4>
       <ul>
         <li><a onclick="navigateToInfoPage('origin')">Our Origin</a></li>
+        <li><a onclick="navigateToInfoPage('portuguese')">Portuguese</a></li>
+        <li><a onclick="navigateToInfoPage('responsible-sourcing')">Responsible Sourcing</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Concierge Services</h4>
       <ul>
         <li><a onclick="navigateToInfoPage('shipping')">Shipping &amp; Bespoke Duties</a></li>
+        <li><a onclick="navigateToInfoPage('returns')">Returns Policy</a></li>
+        <li><a onclick="navigateToInfoPage('privacy')">Account &amp; Privacy</a></li>
       </ul>
     </div>
   </div>
@@ -644,7 +681,6 @@
 
 <script>
   const productsDatabase = [
-    // --- NOVAS ADIÇÕES ---
     {
       id: 50, category: "bags", model: "6151 PALM", color: "Black", price: 495, sizes: ["One Size"],
       images: [
@@ -673,8 +709,6 @@
       ],
       description: "Sophisticated Blue Python texture meets modern design in this exclusive Palm bag."
     },
-
-    // --- PALM BAGS ---
     { 
       id: 1, category: "handbags", model: "6151 PALM", color: "Blue Python", price: 531, sizes: ["One Size"], 
       images: [
@@ -699,8 +733,6 @@
       ],
       description: "Inspired by the elegant Palm tree leaf that symbolises peace, kindness and victory. Exterior: goatskin in tone of black. Interior: matching tone gorgon fabric with zippered pouch. Accessory: golden 4N symbol. Measures: 17x22x6.5 cm."
     },
-    
-    // --- PALM SANDALS ---
     { 
       id: 4, category: "pumps", model: "6151 PALM — Sandals", color: "Blue Python", price: 428, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -734,8 +766,6 @@
       ],
       description: "Inspired by the elegant Palm tree leaf. Leather: goatskin with gold iguana architecture execution. Cushioned clear base. Heel: 10cm."
     },
-    
-    // --- PRISM SERIES ---
     { 
       id: 6, category: "bags", model: "6152 PRISM", color: "Yellow V", price: 500, sizes: ["One Size"],
       images: ["B_6152_Prism_Pink_3-scaled-300x300.jpg"],
@@ -786,8 +816,6 @@
       ],
       description: "Inspired by geometric solids with congruent and parallel faces. Vibrant bright yellow goatskin architecture. Heel: 10cm."
     },
-
-    // --- ANKLE BOOTS ---
     {
       id: 30, category: "ankle boots", model: "6153 SKY", color: "Green Croco", price: 465, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -810,8 +838,6 @@
       ],
       description: "Symbolising alliance and deep commitment. Elegant ankle silhouette in rich bright bordeaux goatskin leather. Golden zipper hardware. Heel: 9cm."
     },
-
-    // --- HIGH BOOTS ---
     {
       id: 32, category: "boots", model: "6155 SNAKE", color: "Dark Brown Python", price: 540, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -856,8 +882,6 @@
       ],
       description: "Inspired by the Yin and Yang concepts that symbolize opposite energies complementing each other to generate balance. Executed in a rich tone of brown smooth goatskin mixed with structural graphic detailing. Heel: 9cm."
     },
-
-// --- FINE SHOES (MOON COLLECTION) ---
     {
       id: 36, category: "shoes-sub", model: "6157 MOON", color: "Reptile Black", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -879,8 +903,6 @@
       ],
       description: "Actable as a mirror of sunlight, reflecting femininity, passivity, periodicity, and renewal. Finished in an elegant and deeply complex glossy petroleum green shade over rich goatskin hide. Heel: 9cm."
     },
-
-    // --- ATELIER PUMPS (SUN COLLECTION) ---
     {
       id: 38, category: "pumps", model: "6158 SUN", color: "Camel Reptile", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
@@ -903,13 +925,8 @@
       ],
       description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless black reptile textured goatskin execution. Heel: 4.5cm."
     },
-{
-      id: 92, // ID corrigido para ser único (era duplicado com o Black Reptile, id 39)
-      category: "pumps", 
-      model: "6158 SUN", 
-      color: "Light Blue Reptil", 
-      price: 435, 
-      sizes: ["36", "37", "38", "39", "40", "41"],
+    {
+      id: 92, category: "pumps", model: "6158 SUN", color: "Light Blue Reptil", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
       images: [
         "S_6158_Sun_LightBlueReptil_3.jpg",
         "S_6158_Sun_LightBlueReptil_4.jpg",
@@ -919,7 +936,6 @@
       ],
       description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless light blue reptile textured goatskin execution. Heel: 4.5cm."
     },
-    // --- OTHER LINES ---
     { id: 10, category: "bags", model: "6153 FLY", color: "Green Petrol Croco V", price: 495, sizes: ["One Size"], images: [], description: "Inspired by the infinite space of the universe. Croco texturing." },
     { id: 15, category: "belts", model: "6151 PALM Belt", color: "Blue Python", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6151_Palm_BluePython_1.png", "Be_6151_Palm_BluePython_2.png", "Be_6151_Palm_BluePython_3.png"], description: "Premium accessory matching the Palm Collection architecture." },
     { id: 60, category: "belts", model: "6151 PALM Belt", color: "Black", price: 106, sizes: ["80", "85", "90", "95"], images: ["Be_6151_Palm_Black_1.png", "Be_6151_Palm_Black_2.png", "Be_6151_Palm_Black_3.png"], description: "Premium accessory matching the Palm Collection architecture." },
@@ -1061,10 +1077,26 @@
       document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Brand ➔ History`;
       document.getElementById('dynamicTitle').innerHTML = `About <em>Our Studio</em>`;
       canvas.innerHTML = `<div class="infopage-container"><p>Fundada sob a premissa de unir linhas estruturais puras e a herança artesanal, a 4NIGHTS é uma marca de luxo contemporânea.</p></div>`;
+    } else if(type === 'portuguese') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Brand ➔ Heritage`;
+      document.getElementById('dynamicTitle').innerHTML = `Portuguese <em>Craftsmanship</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Nossa herança de produção artesanal moldada à mão em Portugal.</p></div>`;
+    } else if(type === 'responsible-sourcing') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Brand ➔ Ethics`;
+      document.getElementById('dynamicTitle').innerHTML = `Responsible <em>Sourcing</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Compromisso com o fornecimento sustentável e materiais de altíssima qualidade.</p></div>`;
     } else if(type === 'shipping') {
       document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Atelier ➔ Help`;
       document.getElementById('dynamicTitle').innerHTML = `Shipping &amp; <em>Bespoke Duties</em>`;
       canvas.innerHTML = `<div class="infopage-container"><p>Envios com seguro total através de parceiros premium mundiais.</p></div>`;
+    } else if(type === 'returns') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Atelier ➔ Support`;
+      document.getElementById('dynamicTitle').innerHTML = `Returns <em>Policy</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Detalhes sobre a política de devolução e trocas de alocações premium.</p></div>`;
+    } else if(type === 'privacy') {
+      document.getElementById('dynamicEyebrow').textContent = `4NIGHTS Atelier ➔ Secure`;
+      document.getElementById('dynamicTitle').innerHTML = `Account &amp; <em>Privacy</em>`;
+      canvas.innerHTML = `<div class="infopage-container"><p>Diretrizes de proteção de dados e gerenciamento de conta concierge.</p></div>`;
     }
     catalogSection.scrollIntoView({ behavior: 'smooth' });
   }
@@ -1144,6 +1176,56 @@
     cart.splice(idx, 1);
     document.getElementById('cartCount').textContent = cart.length;
     renderCart();
+  }
+
+  // DICIONÁRIO DE TRADUÇÕES CORRIGIDO
+  const translations = {
+    en: {
+      heroEyebrow: "Atelier 4NIGHTS — Autumn 2026",
+      heroTitle: "Hand-shaped<br>Leather in<br><em>Portugal</em>",
+      heroSub: "Uncompromising precision meets the rhythm of the night. Discover an exclusive capsule of women's leather architecture, crafted in limited editions.",
+      exploreBtn: "Explore the Collections →"
+    },
+    pt: {
+      heroEyebrow: "Atelier 4NIGHTS — Outono 2026",
+      heroTitle: "Couro Moldado<br>à Mão em<br><em>Portugal</em>",
+      heroSub: "A precisão sem compromissos cruza-se com o ritmo da noite. Descubra uma cápsula exclusiva de arquitetura em couro para mulher, criada em edições limitadas.",
+      exploreBtn: "Explorar as Coleções →"
+    },
+    fr: {
+      heroEyebrow: "Atelier 4NIGHTS — Automne 2026",
+      heroTitle: "Cuir Modelé<br>à la Main au<br><em>Portugal</em>",
+      heroSub: "La précision sans compromis rencontre le rythme de la nuit. Découvrez une collection capsule exclusive d'architecture en cuir pour femme, réalisée en édition limitée.",
+      exploreBtn: "Découvrir les Collections →"
+    },
+    de: {
+      heroEyebrow: "Atelier 4NIGHTS — Herbst 2026",
+      heroTitle: "Handgeformtes<br>Leder in<br><em>Portugal</em>",
+      heroSub: "Kompromisslose Präzision trifft auf den Rhythmus der Nacht. Entdecken Sie eine exklusive Kapselkollektion aus Lederarchitektur für Damen in limitierter Auflage.",
+      exploreBtn: "Kollektionen Entdecken →"
+    }
+  };
+
+  function changeLanguage(lang) {
+    const buttons = document.querySelectorAll('.lang-btn');
+    buttons.forEach(btn => {
+      if (btn.textContent.toLowerCase() === lang) {
+        btn.classList.add('active');
+        btn.style.fontWeight = '600';
+        btn.style.color = '#000000';
+      } else {
+        btn.classList.remove('active');
+        btn.style.fontWeight = '400';
+        btn.style.color = '#666666';
+      }
+    });
+
+    if (translations[lang]) {
+      document.getElementById('heroEyebrow').textContent = translations[lang].heroEyebrow;
+      document.getElementById('heroTitle').innerHTML = translations[lang].heroTitle;
+      document.getElementById('heroSub').textContent = translations[lang].heroSub;
+      document.getElementById('exploreBtn').textContent = translations[lang].exploreBtn;
+    }
   }
 </script>
 
