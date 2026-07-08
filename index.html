@@ -582,7 +582,7 @@
 <footer>
   <div class="footer-grid">
     <div class="footer-col">
-      <img src="logo_4n_b.png" alt="4NIGHTS" class="footer-logo">
+      <img src="logo_4n_b.png" alt="4NIGHTS" class="footer-logo" loading="lazy" decoding="async">
       <p style="color:#aaa; line-height:1.6; max-width: 260px;">Premium silhouettes engineered with fine materials and clean design lines.</p>
     </div>
     <div class="footer-col">
@@ -645,28 +645,6 @@
 <script>
   const productsDatabase = [
     // --- NOVAS ADIÇÕES ---
-    {
-      id: 36, category: "shoes-sub", model: "6157 MOON", color: "Reptile Black", price: 445, sizes: ["36", "37", "38", "39", "40", "41"],
-      images: [
-        "S_6157_Moon_BlackReptil_1.jpg",
-        "S_6157_Moon_BlackReptil_2.jpg",
-        "S_6157_Moon_BlackReptil_4.jpg",
-        "S_6157_Moon_BlackReptil_5.jpg",
-        "S_6157_Moon_BlackReptil_6.jpg"
-      ],
-      description: "Actable as a mirror of sunlight, reflecting femininity, passivity, periodicity, and renewal. Expertly crafted in structural black reptile texture leather with premium lining details. Heel: 9cm."
-    },
-    {
-      id: 39, category: "pumps", model: "6158 SUN", color: "Light Blue Reptil", price: 435, sizes: ["36", "37", "38", "39", "40", "41"],
-      images: [
-        "S_6158_Sun_LightBlueReptil_3.jpg",
-        "S_6158_Sun_LightBlueReptil_4.jpg",
-        "S_6158_Sun_LightBlueReptil_5.jpg",
-        "S_6158_Sun_LightBlueReptil_6.jpg",
-        "S_6158_Sun_LightBlueReptil_2.jpg"
-      ],
-      description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless light blue reptile textured goatskin execution. Heel: 4.5cm."
-    },
     {
       id: 50, category: "bags", model: "6151 PALM", color: "Black", price: 495, sizes: ["One Size"],
       images: [
@@ -926,7 +904,7 @@
       description: "Inspired by the sun star associated with energy and symbolizing light, passion, vitality, and royalty. Finished in an impeccable and timeless black reptile textured goatskin execution. Heel: 4.5cm."
     },
 {
-      id: 39, // Ajusta o ID se necessário para ser único
+      id: 92, // ID corrigido para ser único (era duplicado com o Black Reptile, id 39)
       category: "pumps", 
       model: "6158 SUN", 
       color: "Light Blue Reptil", 
@@ -1049,7 +1027,7 @@
         const mainImage = hasImages ? p.images[0] : '';
         
         const mediaMarkup = hasImages 
-          ? `<img src="${mainImage}" id="prod-img-${p.id}" 
+          ? `<img src="${mainImage}" id="prod-img-${p.id}" loading="lazy" decoding="async"
                   onmouseenter="startImageScroll(this, ${JSON.stringify(p.images).replace(/"/g, '&quot;')})" 
                   onmouseleave="stopImageScroll(this, ${JSON.stringify(p.images).replace(/"/g, '&quot;')})" 
                   alt="${p.model}">` 
@@ -1143,7 +1121,7 @@
     }
     footer.style.display = 'block';
     container.innerHTML = cart.map((item, idx) => {
-      const imgMarkup = item.images && item.images.length > 0 ? `<img src="${item.images[0]}">` : genericVector;
+      const imgMarkup = item.images && item.images.length > 0 ? `<img src="${item.images[0]}" loading="lazy" decoding="async">` : genericVector;
       return `
         <div class="cart-item">
           <div class="cart-item-img">${imgMarkup}</div>
