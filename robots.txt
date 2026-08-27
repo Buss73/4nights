@@ -1,0 +1,7 @@
+# 4NIGHT'S Atelier - robots.txt
+# Dominio real confirmado no catalogo oficial 4NIGHT'S 2023 (www.4nights.com).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.4nights.com/sitemap.xml
