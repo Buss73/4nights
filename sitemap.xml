@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  4NIGHT'S Atelier - sitemap.xml
+  Dominio real confirmado no catalogo oficial 4NIGHT'S 2023 (www.4nights.com).
+
+  NOTA IMPORTANTE: este site e uma SPA de pagina unica (todo o conteudo de
+  categorias e produtos e gerado por JavaScript sob o mesmo index.html, com
+  navegacao por hash: #/shop/bags, #/product/50, etc.). Fragmentos "#" NAO
+  sao enviados ao servidor e o Google nao os trata como URLs indexaveis
+  separadas - por isso este sitemap lista apenas a pagina raiz.
+
+  Para o catalogo (colecoes e produtos) teres URLs proprias e indexaveis
+  neste sitemap, e necessario migrar para paginas geradas no servidor
+  (ex.: a migracao para WordPress/WooCommerce ja em curso). Depois dessa
+  migracao, gerar o sitemap novamente a partir das paginas reais.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.4nights.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
